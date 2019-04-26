@@ -20,5 +20,7 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     }
-  ]
+  ],
+  //removing mode will lead '#' on each route request
+  mode: "history"
 });
