@@ -22,8 +22,13 @@
         <div>
 
             <ul class="list-group" v-bind:key="vocabulary.id" v-for="vocabulary in vocabularies">
-                <li class="list-group-item">{{ vocabulary.title }}</li>
-                <Vocabulary v-bind:vocabulary="vocabulary"/>
+                <li class="list-group-item">
+                    <router-link :to="{ name: 'vocabulary', params: { vocabularyId: vocabulary.id }}">
+                        {{ vocabulary.title }}
+                    </router-link>
+                </li>
+                
+                <!-- <Vocabulary v-bind:vocabulary="vocabulary"/> -->
             </ul>
         </div>
         

@@ -24,7 +24,7 @@ export default {
 
     @media screen and (max-width: 600px) {
         h1 {
-            font-size: 35px;
+            font-size: 30px;
         }
     }
 

@@ -19,7 +19,13 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
-    }
+    },
+    {
+      path: '/vocabulary/:vocabularyId', 
+      name: 'vocabulary', 
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Vocabulary.vue")
+   }
   ],
   //removing mode will lead '#' on each route request
   mode: "history"
