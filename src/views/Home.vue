@@ -18,7 +18,9 @@ export default {
   },
 
   data() {
+    
     return{
+
       vocabularies:[
         {
           id:	1,

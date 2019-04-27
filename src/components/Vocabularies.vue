@@ -6,13 +6,13 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        <a class="page-link bg-dark text-white" href="#" tabindex="-1">Previous</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">1</a></li>
+                    <li class="page-item active"><a class="page-link bg-dark text-danger" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">3</a></li>
                     <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
+                        <a class="page-link bg-dark text-white" href="#">Next</a>
                     </li>
                 </ul>
             </nav>
@@ -22,8 +22,8 @@
         <div>
 
             <ul class="list-group" v-bind:key="vocabulary.id" v-for="vocabulary in vocabularies">
-                <li class="list-group-item">
-                    <router-link :to="{ name: 'vocabulary', params: { vocabularyId: vocabulary.id }}">
+                <li class="list-group-item bg-secondary">
+                    <router-link class="text-white" :to="{ name: 'vocabulary', params: { vocabulary: vocabulary }}">
                         {{ vocabulary.title }}
                     </router-link>
                 </li>
@@ -49,6 +49,7 @@ export default {
         Vocabulary
     },
 
+
     props: ["vocabularies"]
   
 }
@@ -60,5 +61,7 @@ export default {
     .paginate{
         margin: 20px;
     }
+
+    
 
 </style>

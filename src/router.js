@@ -21,7 +21,7 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
     {
-      path: '/vocabulary/:vocabularyId', 
+      path: '/vocabulary-details', 
       name: 'vocabulary', 
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/Vocabulary.vue")
