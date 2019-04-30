@@ -24,7 +24,7 @@
             <ul class="list-group" v-bind:key="vocabulary.id" v-for="vocabulary in vocabularies">
                 <li class="list-group-item bg-secondary">
                     <router-link class="text-white" :to="{ name: 'vocabulary', params: { vocabulary: vocabulary }}">
-                        {{ vocabulary.title }}
+                        {{ vocabulary.word }}
                     </router-link>
                 </li>
                 
