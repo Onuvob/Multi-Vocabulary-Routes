@@ -1,7 +1,69 @@
 <template>
   <div class="home">
     <div class="container">
-      <Vocabularies v-bind:vocabularies="vocabularies"/>
+      <div class="paginate">
+
+            <nav aria-label="Page navigation" v-if="!search">
+                <ul class="pagination justify-content-center">
+                    
+                    <li class="page-item active"><a class="page-link bg-dark text-white" href="#">A</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">B</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">C</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">D</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">E</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">F</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">G</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">H</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">I</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">J</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">K</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">L</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">M</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">N</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">O</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">P</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">Q</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">R</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">S</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">T</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">U</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">V</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">W</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">X</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">Y</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-white" href="#">Z</a></li>
+                    
+                </ul>
+            </nav>
+
+        </div>
+
+       
+        
+        <input class="sticky-top form-control" type="text" v-model="search" placeholder="search">
+       
+        <div class="active-cyan-3 active-cyan-4 mb-4">
+             
+             <input class="sticky-top form-control" aria-label="Search" type="text" v-model="search" placeholder="search">
+       
+        </div>
+        
+      
+        <div>
+
+            <ul class="list-group" v-bind:key="vocabulary.id" v-for="vocabulary in filterVocabularies">
+                <li class="list-group-item bg-secondary">
+                    <router-link class="text-white" :to="{ name: 'vocabulary', params: { vocabulary: vocabulary }}">
+                        {{ vocabulary.word }}
+                    </router-link>
+                </li>
+                
+                <!-- <Vocabulary v-bind:vocabulary="vocabulary"/> -->
+            </ul>
+        </div>
+
+        
+
     </div>
   </div>
 </template>
@@ -9,17 +71,22 @@
 <script>
 // @ is an alias to /src
 
-import Vocabularies from '../components/Vocabularies.vue' 
+//import Vocabularies from '../components/Vocabularies.vue' 
+import Vocabulary from './Vocabulary.vue'
 
 export default {
+
   name: "home",
+
   components: {
-    Vocabularies
+    Vocabulary
   },
 
   data() {
     
     return{
+      
+      search:"",
 
       vocabularies:[
         {
@@ -1224,7 +1291,7 @@ export default {
           {
           "word": "A convincing win/victory", 
           "synonym": "Believable", 
-          "example": "They won a convincing victory.", 
+          "example": "They won a convincing victory.", 
           "video": ""
           }, 
           {
@@ -2610,13 +2677,13 @@ export default {
           {
           "word": "Ahead of the pack", 
           "synonym": "", 
-          "example": "Our products will have to be more innovative if we want to stay ahead of the pack. ", 
+          "example": "Our products will have to be more innovative if we want to stay ahead of the pack. ", 
           "video": ""
           }, 
           {
           "word": "Ahead of the pack", 
           "synonym": "", 
-          "example": "Our products will have to be more innovative if we want to stay ahead of the pack. ", 
+          "example": "Our products will have to be more innovative if we want to stay ahead of the pack. ", 
           "video": ""
           }, 
           {
@@ -2688,7 +2755,7 @@ export default {
           {
           "word": "All downhill/ downhill all the way", 
           "synonym": "", 
-          "example": "The hardest part for the burglars was turning off the alarm system.  After that it was all downhill.", 
+          "example": "The hardest part for the burglars was turning off the alarm system.  After that it was all downhill.", 
           "video": ""
           }, 
           {
@@ -3606,7 +3673,7 @@ export default {
           {
           "word": "At this stage of the game", 
           "synonym": "", 
-          "example": "At this stage of the game I think any further intervention would be unwise.  Let's wait and see how things develop.", 
+          "example": "At this stage of the game I think any further intervention would be unwise.  Let's wait and see how things develop.", 
           "video": ""
           }, 
           {
@@ -3618,7 +3685,7 @@ export default {
           {
           "word": "At your convenience", 
           "synonym": "Acceptable", 
-          "example": "The goods will be delivered at your convenience.", 
+          "example": "The goods will be delivered at your convenience.", 
           "video": "https://www.youtube.com/embed/hg6yYD"
           }, 
           {
@@ -4776,7 +4843,7 @@ export default {
           {
           "word": "Be carpeted with something", 
           "synonym": "Matting", 
-          "example": "In spring this area is carpeted with bluebells.", 
+          "example": "In spring this area is carpeted with bluebells.", 
           "video": ""
           }, 
           {
@@ -4836,26 +4903,26 @@ export default {
           {
           "word": "Be conversant with sth", 
           "synonym": "Aware.", 
-          "example": "I'm not conversant with the rules of chess.", 
+          "example": "I'm not conversant with the rules of chess.", 
           "video": ""
           }, 
           {
           "word": "Be convulsed with laughter/rage, etc.", 
           "synonym": "Strong feelings.", 
-          "example": "All of us were convulsed with laughter.", 
+          "example": "All of us were convulsed with laughter.", 
           "video": ""
           }, 
           {
           "word": "Be cooking", 
           "synonym": "Betterment", 
-          "example": "The battery's recharged, give it a little more gas. Now we're cooking!", 
+          "example": "The battery's recharged, give it a little more gas. Now we're cooking!", 
           "video": ""
           }, 
           {
           "word": "Be cool with sth", 
           "synonym": "Calm and relaxed.", 
           "example": "", 
-          "video": "Yeah, we could leave later "
+          "video": "Yeah, we could leave later "
           }, 
           {
           "word": "Be crawling with sth", 
@@ -5682,7 +5749,7 @@ export default {
           {
           "word": "Bear fruit", 
           "synonym": "", 
-          "example": "After years of hard work, his research finally began to bear fruit.  ", 
+          "example": "After years of hard work, his research finally began to bear fruit.  ", 
           "video": ""
           }, 
           {
@@ -6132,7 +6199,7 @@ export default {
           {
           "word": "Bent out of shape", 
           "synonym": "", 
-          "example": "Don't get bent out of shape if you're delayed.  We'll wait for you.", 
+          "example": "Don't get bent out of shape if you're delayed.  We'll wait for you.", 
           "video": ""
           }, 
           {
@@ -7278,7 +7345,7 @@ export default {
           {
           "word": "Bounce off the walls", 
           "synonym": "", 
-          "example": "Danny can't wait to start his new job.  He's bouncing off the walls.", 
+          "example": "Danny can't wait to start his new job.  He's bouncing off the walls.", 
           "video": ""
           }, 
           {
@@ -8585,7 +8652,7 @@ export default {
           {
           "word": "Car pool", 
           "synonym": "", 
-          "example": "Its easier to car", 
+          "example": "Its easier to car", 
           "video": "https://www.youtube.com/embed/xuaX1eyj1Ew"
           }, 
           {
@@ -8609,7 +8676,7 @@ export default {
           {
           "word": "Career woman", 
           "synonym": "Associate", 
-          "example": "Afterwards, so many successful career women came up to me wanting advice.", 
+          "example": "Afterwards, so many successful career women came up to me wanting advice.", 
           "video": ""
           }, 
           {
@@ -8621,43 +8688,43 @@ export default {
           {
           "word": "Careworn", 
           "synonym": "Mournful", 
-          "example": "Her mother, who couldn't have been much more than 30, looked old and careworn.", 
+          "example": "Her mother, who couldn't have been much more than 30, looked old and careworn.", 
           "video": "https://www.youtube.com/embed/DN6csbAWWJw"
           }, 
           {
           "word": "Cargo", 
           "synonym": "Transportation", 
-          "example": "The ship was carrying a cargo of wood.", 
+          "example": "The ship was carrying a cargo of wood.", 
           "video": "https://www.youtube.com/embed/V"
           }, 
           {
           "word": "Carmine", 
           "synonym": "Maroon", 
-          "example": "To avoid any renderings too literal or ironic, Robbie traded carmine lips for a swipe of rose, the hue also applied along cheekbones.", 
+          "example": "To avoid any renderings too literal or ironic, Robbie traded carmine lips for a swipe of rose, the hue also applied along cheekbones.", 
           "video": "https://www.youtube.com/embed/IjXfjzQxXE4"
           }, 
           {
           "word": "Carnage", 
           "synonym": "Fatal", 
-          "example": "The Battle of the Somme was a scene of dreadful carnage.", 
+          "example": "The Battle of the Somme was a scene of dreadful carnage.", 
           "video": ""
           }, 
           {
           "word": "Carnival", 
           "synonym": "Amusement arcade", 
-          "example": "There's a real carnival atmosphere in the streets.", 
+          "example": "There's a real carnival atmosphere in the streets.", 
           "video": "https://www.youtube.com/embed/Jo"
           }, 
           {
           "word": "Carnivore", 
           "synonym": "Omnivore", 
-          "example": "Lions and tigers are carnivores.", 
+          "example": "Lions and tigers are carnivores.", 
           "video": "https://www.youtube.com/embed/pr7Wu05H8no"
           }, 
           {
           "word": "Carol", 
           "synonym": "Singing", 
-          "example": "'Silent Night' is my favorite Christmas carol.", 
+          "example": "'Silent Night' is my favorite Christmas carol.", 
           "video": "https://www.youtube.com/embed/Z0Z3QHmciU8"
           }, 
           {
@@ -8669,7 +8736,7 @@ export default {
           {
           "word": "Carriage", 
           "synonym": "Cart", 
-          "example": "The Queen's carriage headed the procession.", 
+          "example": "The Queen's carriage headed the procession.", 
           "video": "https://www.youtube.com/embed/oBZjK5ON2o8"
           }, 
           {
@@ -8687,7 +8754,7 @@ export default {
           {
           "word": "Carry a torch for sb", 
           "synonym": "Infatuation", 
-          "example": "Terry has been carrying a torch for Liz for years, but she seems not to notice.", 
+          "example": "Terry has been carrying a torch for Liz for years, but she seems not to notice.", 
           "video": "https://www.youtube.com/embed/COyDP9dJXM4"
           }, 
           {
@@ -9227,7 +9294,7 @@ export default {
           {
           "word": "Chase your own tail", 
           "synonym": "", 
-          "example": "He's been chasing his tail all week collecting data but the report is still  not ready.", 
+          "example": "He's been chasing his tail all week collecting data but the report is still  not ready.", 
           "video": ""
           }, 
           {
@@ -9629,7 +9696,7 @@ export default {
           {
           "word": "Chirpy", 
           "synonym": "Jubilant", 
-          "example": "She seemed quite chirpy this morning.", 
+          "example": "She seemed quite chirpy this morning.", 
           "video": "https://www.youtube.com/embed/3"
           }, 
           {
@@ -9641,13 +9708,13 @@ export default {
           {
           "word": "Chock", 
           "synonym": "Burst", 
-          "example": "The whole room was chock", 
+          "example": "The whole room was chock", 
           "video": "https://www.youtube.com/embed/KoWfxAkPjW4"
           }, 
           {
           "word": "Chock", 
           "synonym": "Crowded", 
-          "example": "The streets were chock", 
+          "example": "The streets were chock", 
           "video": "https://www.youtube.com/embed/G2nHoP4WYL4"
           }, 
           {
@@ -9659,7 +9726,7 @@ export default {
           {
           "word": "Choke sth back", 
           "synonym": "Controlling emotions.", 
-          "example": "Choking back my anger, I tried to speak calmly.", 
+          "example": "Choking back my anger, I tried to speak calmly.", 
           "video": ""
           }, 
           {
@@ -9671,19 +9738,19 @@ export default {
           {
           "word": "Chomp", 
           "synonym": "Bite.", 
-          "example": "He was chomping away on a bar of chocolate.", 
+          "example": "He was chomping away on a bar of chocolate.", 
           "video": "https://www.youtube.com/embed/CvVwRN"
           }, 
           {
           "word": "Chop sth down", 
-          "synonym": "Cut sth down", 
-          "example": "Most of the diseased trees were chopped down last year.", 
+          "synonym": "Cut sth down", 
+          "example": "Most of the diseased trees were chopped down last year.", 
           "video": ""
           }, 
           {
           "word": "Chop sth off", 
           "synonym": "Disconnect", 
-          "example": "Two of his fingers were chopped off in the accident.", 
+          "example": "Two of his fingers were chopped off in the accident.", 
           "video": ""
           }, 
           {
@@ -9701,19 +9768,19 @@ export default {
           {
           "word": "Chore", 
           "synonym": "Labor", 
-          "example": "I'll go shopping when I've done my chores.", 
+          "example": "I'll go shopping when I've done my chores.", 
           "video": "https://www.youtube.com/embed/T41bhhCzK_s"
           }, 
           {
           "word": "Chortle", 
           "synonym": "Amused", 
-          "example": "She chortled with glee at the news.", 
+          "example": "She chortled with glee at the news.", 
           "video": "https://www.youtube.com/embed/rBg4Tcg7ENM"
           }, 
           {
           "word": "Chorus", 
           "synonym": "Song form", 
-          "example": "They burst into a chorus of Happy Birthday.", 
+          "example": "They burst into a chorus of Happy Birthday.", 
           "video": "https://www.youtube.com/embed/nqTGzCBZruM"
           }, 
           {
@@ -9724,8 +9791,8 @@ export default {
           }, 
           {
           "word": "Chronic", 
-          "synonym": "very bad.", 
-          "example": "She suffers from chronic pain in her knees.", 
+          "synonym": "very bad.", 
+          "example": "She suffers from chronic pain in her knees.", 
           "video": "https://www.youtube.com/embed/oVuudsfDako"
           }, 
           {
@@ -9737,7 +9804,7 @@ export default {
           {
           "word": "Chronology", 
           "synonym": "Quality time", 
-          "example": "I'm not sure of the chronology of events.", 
+          "example": "I'm not sure of the chronology of events.", 
           "video": "https://www.youtube.com/embed/DJsqlX60JHQ"
           }, 
           {
@@ -9749,103 +9816,103 @@ export default {
           {
           "word": "Chuck sb out", 
           "synonym": "Kick", 
-          "example": "He'd been chucked out of a club for fighting.", 
+          "example": "He'd been chucked out of a club for fighting.", 
           "video": "https://www.youtube.com/embed/RmqOe2fsGnc"
           }, 
           {
           "word": "Chuck sb under the chin", 
           "synonym": "Affectionate", 
-          "example": "'Cheer up,' she said and chucked the little girl under the chin.", 
+          "example": "'Cheer up,' she said and chucked the little girl under the chin.", 
           "video": ""
           }, 
           {
           "word": "Chuck sth away", 
           "synonym": "Banish", 
-          "example": "I've chucked out all my old clothes.", 
+          "example": "I've chucked out all my old clothes.", 
           "video": ""
           }, 
           {
           "word": "Chuck sth in", 
           "synonym": "Drop", 
-          "example": "I've decided to chuck in my job.", 
+          "example": "I've decided to chuck in my job.", 
           "video": ""
           }, 
           {
           "word": "Chuck", 
           "synonym": "Overhand", 
-          "example": "Chuck it over there/into the corner.", 
+          "example": "Chuck it over there/into the corner.", 
           "video": "https://www.youtube.com/embed/SmFpxaQim5k"
           }, 
           {
           "word": "Chuckle", 
           "synonym": "Giggle", 
-          "example": "She was chuckling as she read the letter.", 
+          "example": "She was chuckling as she read the letter.", 
           "video": "https://www.youtube.com/embed/dqMfiLluV5Y"
           }, 
           {
           "word": "Chuffed", 
           "synonym": "Delighted", 
-          "example": "He was really chuffed with his present.", 
+          "example": "He was really chuffed with his present.", 
           "video": "https://www.youtube.com/embed/xsxpWAJFGdc"
           }, 
           {
           "word": "Chum up", 
           "synonym": "Intimately", 
-          "example": "She chummed up with some girls from Bristol on holiday.", 
+          "example": "She chummed up with some girls from Bristol on holiday.", 
           "video": ""
           }, 
           {
           "word": "Chummy", 
           "synonym": "Mate", 
-          "example": "They're very chummy with their neighbor's", 
+          "example": "They're very chummy with their neighbor's", 
           "video": "https://www.youtube.com/embed/CGM73KlqQZY"
           }, 
           {
           "word": "Chunky", 
           "synonym": "Stocky", 
-          "example": "His wife Annie was dour and a bit on the chunky side.", 
+          "example": "His wife Annie was dour and a bit on the chunky side.", 
           "video": "https://www.youtube.com/embed/QWOABSfrUGU"
           }, 
           {
           "word": "Chunter", 
           "synonym": "Protest", 
-          "example": "All were chuntering about being the last to know what was happening.", 
+          "example": "All were chuntering about being the last to know what was happening.", 
           "video": "https://www.youtube.com/embed/hx_qDNkDWzo"
           }, 
           {
           "word": "Churlish", 
           "synonym": "Impolite", 
-          "example": "They invited me to dinner and I thought it would be churlish to refuse.", 
+          "example": "They invited me to dinner and I thought it would be churlish to refuse.", 
           "video": "https://www.youtube.com/embed/Q6J6s6SjaN0"
           }, 
           {
           "word": "Churn sth out", 
           "synonym": "Overproduce", 
-          "example": "She churns out a new best", 
+          "example": "She churns out a new best", 
           "video": "https://www.youtube.com/embed/hnOtsr9AA_A"
           }, 
           {
           "word": "Churn", 
           "synonym": "Shake", 
-          "example": "The storm churned the sea.", 
+          "example": "The storm churned the sea.", 
           "video": "https://www.youtube.com/embed/1L6h0Q_WEKY"
           }, 
           {
           "word": "Chutzpah", 
           "synonym": "Unpleasant", 
-          "example": "I lack the wherewithal to start my own competing certifying board, to say nothing of the chutzpah.", 
+          "example": "I lack the wherewithal to start my own competing certifying board, to say nothing of the chutzpah.", 
           "video": "https://www.youtube.com/embed/grMQviBpVA0"
           }, 
           {
           "word": "Cinder", 
           "synonym": "Fumes", 
-          "example": "The cake was burned to a cinder.", 
+          "example": "The cake was burned to a cinder.", 
           "video": "https://www.youtube.com/embed/Ja_ZiQDUr"
           }, 
           {
           "word": "Cipher", 
           "synonym": "Code", 
-          "example": "The message was written in cipher.", 
+          "example": "The message was written in cipher.", 
           "video": "https://www.youtube.com/embed/MCxt4j4QF4Q"
           }, 
           {
@@ -9857,61 +9924,61 @@ export default {
           {
           "word": "Circumlocution", 
           "synonym": "Implicit", 
-          "example": "Politicians are experts in circumlocution.", 
+          "example": "Politicians are experts in circumlocution.", 
           "video": "https://www.youtube.com/embed/AgExcXzZmT8"
           }, 
           {
           "word": "Circumnavigate", 
           "synonym": "", 
-          "example": "They circumnavigated Cape Horn Island in canoes.", 
+          "example": "They circumnavigated Cape Horn Island in canoes.", 
           "video": "https://www.youtube.com/embed/kYLKRzgY2CQ"
           }, 
           {
           "word": "Circumscribe", 
           "synonym": "Restricting", 
-          "example": "There followed a series of tightly circumscribed visits to military installations.", 
+          "example": "There followed a series of tightly circumscribed visits to military installations.", 
           "video": "https://www.youtube.com/embed/"
           }, 
           {
           "word": "Circumspect", 
           "synonym": "vigilant", 
-          "example": "Officials were circumspect about saying what the talks had achieved.", 
+          "example": "Officials were circumspect about saying what the talks had achieved.", 
           "video": "https://www.youtube.com/embed/Nl8OHac4awI"
           }, 
           {
           "word": "Circumstance", 
           "synonym": "Condition", 
-          "example": "I think she coped very well under the circumstances.", 
+          "example": "I think she coped very well under the circumstances.", 
           "video": "https://www.youtube.com/embed/eS9vSkvZs9I"
           }, 
           {
           "word": "Circumstances", 
           "synonym": "Economic situation.", 
-          "example": "Grants are available depending on your circumstances.", 
+          "example": "Grants are available depending on your circumstances.", 
           "video": "https://www.youtube.com/embed/nOdkYfuqNKQ"
           }, 
           {
           "word": "Circumstantial", 
           "synonym": "Conflicted", 
-          "example": "The case against her was circumstantial.", 
+          "example": "The case against her was circumstantial.", 
           "video": "https://www.youtube.com/embed/3g5qh_hvIgA"
           }, 
           {
           "word": "Circumvent", 
           "synonym": "Insure", 
-          "example": "Ships were registered abroad to circumvent employment and safety regulations.", 
+          "example": "Ships were registered abroad to circumvent employment and safety regulations.", 
           "video": "https://www.youtube.com/embed/HRX8WjOX2Ws"
           }, 
           {
           "word": "Circus", 
           "synonym": "Amusement park", 
-          "example": "She ran away to join the circus.", 
+          "example": "She ran away to join the circus.", 
           "video": "https://www.youtube.com/embed/"
           }, 
           {
           "word": "Circus", 
           "synonym": "Midway", 
-          "example": "Piccadilly Circus is a road junction and public space of London's West End in the City of Westminster.", 
+          "example": "Piccadilly Circus is a road junction and public space of London's West End in the City of Westminster.", 
           "video": ""
           }, 
           {
@@ -9983,7 +10050,7 @@ export default {
           {
           "word": "Close to home", 
           "synonym": "", 
-          "example": "Alan looks embarrassed.  Bob's comment must have been close to home.", 
+          "example": "Alan looks embarrassed.  Bob's comment must have been close to home.", 
           "video": ""
           }, 
           {
@@ -10145,7 +10212,7 @@ export default {
           {
           "word": "Come up in the world", 
           "synonym": "", 
-          "example": "My old school friend has bought an apartment overlooking Central Park.  She has certainly come up in the world.", 
+          "example": "My old school friend has bought an apartment overlooking Central Park.  She has certainly come up in the world.", 
           "video": ""
           }, 
           {
@@ -10199,7 +10266,7 @@ export default {
           {
           "word": "Come/turn up trumps", 
           "synonym": "", 
-          "example": "Against all expectations, our team came up trumps in the cup final. ", 
+          "example": "Against all expectations, our team came up trumps in the cup final. ", 
           "video": ""
           }, 
           {
@@ -12590,49 +12657,49 @@ export default {
           {
           "word": "Convene", 
           "synonym": "Get together", 
-          "example": "The council will be convening on the morning of the 25th.", 
+          "example": "The council will be convening on the morning of the 25th.", 
           "video": "https://www.youtube.com/embed/uA33ulUdi5E"
           }, 
           {
           "word": "Convent", 
           "synonym": "Nunnery", 
-          "example": "His memoirs led Campagnol to a convent at the church of Santa Maria degli Angeli on Murano, where Mr.Casanova had a lover.", 
+          "example": "His memoirs led Campagnol to a convent at the church of Santa Maria degli Angeli on Murano, where Mr.Casanova had a lover.", 
           "video": "https://www.youtube.com/embed/8NrxvoFQfW8"
           }, 
           {
           "word": "Convention", 
           "synonym": "Conference", 
-          "example": "The Governor of New York delivered a rousing speech to the national convention.", 
+          "example": "The Governor of New York delivered a rousing speech to the national convention.", 
           "video": "https://www.youtube.com/embed/_BfHqlHay8s"
           }, 
           {
           "word": "Convention", 
           "synonym": "The new world order", 
-          "example": "What do you expect from the upcoming party conventions?", 
+          "example": "What do you expect from the upcoming party conventions?", 
           "video": "https://www.youtube.com/embed/PbWK"
           }, 
           {
           "word": "Convention", 
           "synonym": "Tradition & conformity.", 
-          "example": "Convention dictates that it is the man who asks the woman to marry him and not the other way round.", 
+          "example": "Convention dictates that it is the man who asks the woman to marry him and not the other way round.", 
           "video": "https://www.youtube.com/embed/KgPdjc8vscU"
           }, 
           {
           "word": "Converge", 
           "synonym": "Connecting and combining.", 
-          "example": "The paths all converge at the main gate of the park.", 
+          "example": "The paths all converge at the main gate of the park.", 
           "video": "https://www.youtube.com/embed/vHTF7YmjWQE"
           }, 
           {
           "word": "Conversion", 
           "synonym": "Alteration.", 
-          "example": "Solar power is the conversion of the sun's energy into heat and electricity.", 
+          "example": "Solar power is the conversion of the sun's energy into heat and electricity.", 
           "video": "https://www.youtube.com/embed/AVuWhS5NMFc"
           }, 
           {
           "word": "Conversion", 
           "synonym": "Transformation", 
-          "example": "In rugby, if a player makes or kicks a conversion, he scores points by kicking the ball over the goal after a try has been scored.", 
+          "example": "In rugby, if a player makes or kicks a conversion, he scores points by kicking the ball over the goal after a try has been scored.", 
           "video": "https://www.youtube.com/embed/AMF"
           }, 
           {
@@ -12644,13 +12711,13 @@ export default {
           {
           "word": "Convertible", 
           "synonym": "Changing.", 
-          "example": "A convertible sofa bed", 
+          "example": "A convertible sofa bed", 
           "video": "https://www.youtube.com/embed/mN1VT8KElBE"
           }, 
           {
           "word": "Convex", 
           "synonym": "Arched", 
-          "example": "A convex lens/mirror.", 
+          "example": "A convex lens/mirror.", 
           "video": "https://www.youtube.com/embed/becXPBK5t_U"
           }, 
           {
@@ -12668,25 +12735,25 @@ export default {
           {
           "word": "Conveyorbelt", 
           "synonym": "Power station", 
-          "example": "A conveyor belt is the carrying medium of a belt conveyor system.", 
+          "example": "A conveyor belt is the carrying medium of a belt conveyor system.", 
           "video": "https://www.youtube.com/embed/2mdn9Ay3ybk"
           }, 
           {
           "word": "Conviction", 
           "synonym": "Court cases.", 
-          "example": "He has a long record of previous convictions for similar offences.", 
+          "example": "He has a long record of previous convictions for similar offences.", 
           "video": "https://www.youtube.com/embed/xL2hQVm9X84"
           }, 
           {
           "word": "Conviction", 
           "synonym": "Judgment", 
-          "example": "It's my personal conviction that all rapists should be locked away for life.", 
+          "example": "It's my personal conviction that all rapists should be locked away for life.", 
           "video": "https://www.youtube.com/embed/79xWIVaeJ4E"
           }, 
           {
           "word": "Convivial", 
           "synonym": "Mate", 
-          "example": "A convivial atmosphere/host", 
+          "example": "A convivial atmosphere/host", 
           "video": "https://www.youtube.com/embed/Bwr"
           }, 
           {
@@ -12698,31 +12765,31 @@ export default {
           {
           "word": "Convoluted", 
           "synonym": "Meander", 
-          "example": "His grammar explanations are terribly convoluted.", 
+          "example": "His grammar explanations are terribly convoluted.", 
           "video": "https://www.youtube.com/embed/ZCmo0C5WCh0"
           }, 
           {
           "word": "Convoy", 
           "synonym": "Journeys.", 
-          "example": "A convoy of trucks containing supplies was sent to the famine area.", 
+          "example": "A convoy of trucks containing supplies was sent to the famine area.", 
           "video": "https://www.youtube.com/embed/iF2pceocW"
           }, 
           {
           "word": "Convulse", 
           "synonym": "Palpitate", 
-          "example": "A racking cough convulsed her whole body.", 
+          "example": "A racking cough convulsed her whole body.", 
           "video": "https://www.youtube.com/embed/VDwn08BqL9g"
           }, 
           {
           "word": "Cony", 
           "synonym": "Rodents & similar animals.", 
-          "example": "The American cony lives on top of the world—on the crest of the continent.", 
+          "example": "The American cony lives on top of the world—on the crest of the continent.", 
           "video": "https://www.youtube.com/embed/lQRj4iH5yzI"
           }, 
           {
           "word": "Coo", 
           "synonym": "Oink", 
-          "example": "The baby lay in his cot, cooing and gurgling.", 
+          "example": "The baby lay in his cot, cooing and gurgling.", 
           "video": "https://www.youtube.com/embed/6oBKlcIibWc"
           }, 
           {
@@ -12740,13 +12807,13 @@ export default {
           {
           "word": "Cook sth up", 
           "synonym": "Cheating & tricking.", 
-          "example": "I had to cook up an excuse about my car breaking down.", 
+          "example": "I had to cook up an excuse about my car breaking down.", 
           "video": ""
           }, 
           {
           "word": "Cook the books", 
           "synonym": "Forensic accountant", 
-          "example": "Falsify a company's financial records, as in An independent audit showed that they've been cooking the books for year.", 
+          "example": "Falsify a company's financial records, as in An independent audit showed that they've been cooking the books for year.", 
           "video": "https://www.youtube.com/embed/jEL"
           }, 
           {
@@ -12758,25 +12825,25 @@ export default {
           {
           "word": "Cooked ˈ breakfast", 
           "synonym": "Meals & parts of meals.", 
-          "example": "50% of British families still started their day with a cooked breakfast.", 
+          "example": "50% of British families still started their day with a cooked breakfast.", 
           "video": ""
           }, 
           {
           "word": "Cookery", 
           "synonym": "spoonful", 
-          "example": "A new cookery book by celebrity chef Jamie Oliver.", 
+          "example": "A new cookery book by celebrity chef Jamie Oliver.", 
           "video": "https://www.youtube.com/embed/U2vP9FqTu2A"
           }, 
           {
           "word": "Cookie cutter n", 
           "synonym": "Kitchen utensils.", 
-          "example": "She does not have her own style, she is cookie cutter. ", 
+          "example": "She does not have her own style, she is cookie cutter. ", 
           "video": "https://www.youtube.com/embed/8F88KWCzs_c"
           }, 
           {
           "word": "Cookie", 
           "synonym": "Alike", 
-          "example": "A row of cookie", 
+          "example": "A row of cookie", 
           "video": "https://www.youtube.com/embed/hbDgtQf_oaM"
           }, 
           {
@@ -12788,13 +12855,13 @@ export default {
           {
           "word": "Cookout", 
           "synonym": "Plate meal", 
-          "example": "Many stay in touch through a private Facebook page, and several gathered last fall for a cookout.", 
+          "example": "Many stay in touch through a private Facebook page, and several gathered last fall for a cookout.", 
           "video": "https://www.youtube.com/embed/oiT6zt05mUQ"
           }, 
           {
           "word": "Cool sb/sth down/off", 
           "synonym": "Fresh", 
-          "example": "We went for a swim to cool off.", 
+          "example": "We went for a swim to cool off.", 
           "video": ""
           }, 
           {
@@ -12824,7 +12891,7 @@ export default {
           {
           "word": "Cool it", 
           "synonym": "Calming and relaxing.", 
-          "example": "Just cool it everyone, fighting won't solve anything.", 
+          "example": "Just cool it everyone, fighting won't solve anything.", 
           "video": "https://www.youtube.com/embed/4xLdtEJqJEk"
           }, 
           {
@@ -13802,7 +13869,7 @@ export default {
           {
           "word": "Crest of the wave", 
           "synonym": "", 
-          "example": "Our company is going from success to success.  We're on the crest of a wave right now.", 
+          "example": "Our company is going from success to success.  We're on the crest of a wave right now.", 
           "video": ""
           }, 
           {
@@ -15116,13 +15183,13 @@ export default {
           {
           "word": "Cut one’s losses", 
           "synonym": "", 
-          "example": "The project is heading for failure.  Let's cut our losses before it's too late.", 
+          "example": "The project is heading for failure.  Let's cut our losses before it's too late.", 
           "video": ""
           }, 
           {
           "word": "Cut one’s own throat", 
           "synonym": "", 
-          "example": "Tony has already missed a lot of classes.  He's cutting his own throat.", 
+          "example": "Tony has already missed a lot of classes.  He's cutting his own throat.", 
           "video": ""
           }, 
           {
@@ -15928,130 +15995,26 @@ export default {
           "synonym": "Hurrying, doing things quickly.", 
           "example": "She dashed the letter off in five minutes.", 
           "video": ""
-          }, 
-          {
-          "word": "Dash", 
-          "synonym": "Rush, outran.", 
-          "example": "The plane dashed away over my head.", 
-          "video": "https://www.youtube.com/embed/vstKmvUV_As"
-          }, 
-          {
-          "word": "Dash", 
-          "synonym": "Strike, smash.", 
-          "example": "The tidal wave dashed the ship against the rocks.", 
-          "video": "https://www.youtube.com/embed/vstKmvUV_As"
-          }, 
-          {
-          "word": "Dawn", 
-          "synonym": "", 
-          "example": "the dawn of civilization", 
-          "video": ""
-          }, 
-          {
-          "word": "Dawn", 
-          "synonym": "Crack of Dawn, Cock", 
-          "example": "The first appearance of light in the sky before sunrise.", 
-          "video": "https://www.youtube.com/embed/lj9JwMt8sl4"
-          }, 
-          {
-          "word": "Daydream", 
-          "synonym": "", 
-          "example": "She just sits in class daydreaming about her horses.", 
-          "video": ""
-          }, 
-          {
-          "word": "De facto", 
-          "synonym": "", 
-          "example": "The society was de facto divided between the rich and the poor", 
-          "video": ""
-          }, 
-          {
-          "word": "De trop", 
-          "synonym": "Excess, Excessive, Extra , Not wanted , Surplus, Too much , Unwelcome", 
-          "example": "She had no grasp of the conversation and felt herself de trop.", 
-          "video": ""
-          }, 
-          {
-          "word": "De", 
-          "synonym": "", 
-          "example": "Robert tried to de", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead cert", 
-          "synonym": "", 
-          "example": "After such praise, his appointment as captain of the team is a dead cert.", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead cert", 
-          "synonym": "", 
-          "example": "After such praise, his appointment as captain of the team is a dead cert.", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead duck", 
-          "synonym": "", 
-          "example": "The new cinema is going to be a dead duck because it's too far away from the town centre.", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead duck", 
-          "synonym": "", 
-          "example": "The new cinema is going to be a dead duck because it's too far away from the town centre.", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead in the water", 
-          "synonym": "", 
-          "example": "Because of the crisis, the planned housing development is now dead in the water.", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead in the water", 
-          "synonym": "", 
-          "example": "Because of the crisis, the planned housing development is now dead in the water.", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead loss", 
-          "synonym": "", 
-          "example": "When it comes to gardening, my brother is a dead loss.", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead man walking", 
-          "synonym": "", 
-          "example": "Because of the way he handled the recent riots, the minister is a dead man walking.", 
-          "video": "https://www.youtube.com/embed/2SAbDq63l1Y from 0:21 second"
-          }, 
-          {
-          "word": "Dead man walking.", 
-          "synonym": "", 
-          "example": "Because of the way he handled the recent riots, the minister is a dead man walking.", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead ringer", 
-          "synonym": "", 
-          "example": "He's a dead ringer for Bono from U2.", 
-          "video": "https://www.youtube.com/embed/uYJnPxKfPYs"
-          }, 
-          {
-          "word": "Dead wood", 
-          "synonym": "", 
-          "example": "The new manager wants to reduce costs by cutting out the dead wood.", 
-          "video": ""
-          }, 
-          {
-          "word": "Dead wood", 
-          "synonym": "", 
-          "example": "The new manager wants to reduce costs by cutting out the dead wood.", 
-          "video": "https://www.youtube.com/embed/x1xKGGeLBM8 from 0:08 second"
           }
 
       ]
     }
+  },
+
+  computed: {
+      filterVocabularies: function(){
+          return this.vocabularies.filter((vocabulary)=>{
+              return vocabulary.word.match(this.search);
+          })
+      }
   }
 };
 </script>
+
+<style scoped>
+
+    .paginate{
+        margin: 20px;
+    }
+
+</style>
