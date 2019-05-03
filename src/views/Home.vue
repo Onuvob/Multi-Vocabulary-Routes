@@ -43,7 +43,7 @@
        
         <div class="mb-4 sticky-top">
              
-             <input class="form-control" aria-label="Search" type="text" v-model="search" placeholder="search">
+             <input class="form-control" aria-label="Search" type="text" v-model="search" placeholder="search...">
        
         </div>
         
